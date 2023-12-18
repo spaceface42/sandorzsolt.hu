@@ -1,3 +1,10 @@
 /**
  * https://www.sandorzolt.hu
  */
+
+/**
+ * defaults
+ */
+html {
+    scroll-behavior: smooth;
+}
