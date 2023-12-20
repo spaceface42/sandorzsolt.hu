@@ -20,8 +20,10 @@
         <a href="#">contact</a>
     </li>
 </ul>
-
+https://codepen.io/sean_codes/pen/WdzgdY
 <style>
+
+
 
 li {
     margin: 20px;
@@ -35,6 +37,14 @@ li {
 .contact {
     padding: 1rem 3rem;
     border-radius: 3em;
+
+    /* Prevent background color leak outs */
+    -webkit-background-clip: padding-box; 
+    -moz-background-clip:    padding; 
+    background-clip:         padding-box;
+    /* https://css-tricks.com/almanac/properties/b/border-radius/ */
+
+
     background-color: rgb(133, 106, 160);
 }
 
@@ -42,7 +52,10 @@ li {
 
 
     .logo {
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
 
+        top: 0;
         margin: 4rem;
         
         display: flex;
@@ -57,11 +70,17 @@ li {
 
     object {
         width: 100px;
+        transform: rotate(1deg);
         padding: 0;
         margin: 0;
         display: inline-flex;
-        background-color: aqua;
     }
+
+    object:first-child {
+        transform: rotate(-1deg);
+    }
+
+
     .logo object {
         
     }
