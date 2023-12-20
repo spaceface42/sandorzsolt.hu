@@ -8,3 +8,21 @@
 html {
     scroll-behavior: smooth;
 }
+
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior:auto
+    }
+
+    *, :after, :before {
+        -webkit-animation-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        -webkit-animation-iteration-count: 1 !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior:auto !important
+    }
+}
+
+
