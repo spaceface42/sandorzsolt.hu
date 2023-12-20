@@ -2,7 +2,13 @@
 	"folders": [
 		{
 			"path": "."
+		},
+				{
+			"path": "./docs"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "sandorzsolt.hu",
+		"liveServer.settings.root": "/docs"
+	}
 }
