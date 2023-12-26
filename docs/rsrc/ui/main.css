@@ -2,26 +2,12 @@
  * https://www.sandorzolt.hu
  */
 
-/**
- * defaults
- */
-html {
-    scroll-behavior: smooth;
-}
 
 
 
 
-img {
-    display: inline-block;
-    max-width: 100%;
-    heigh: auto;
-    vertical-align: middle;
-    background-size: cover;
-    background-repeat: no-repeat;
-    shape-margin: 1rem;
-    font-style: italic;
-}
+
+
 
 
 
