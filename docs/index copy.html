@@ -7,11 +7,36 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="./rsrc/ui/reset.css" />
-    <link rel="stylesheet" href="./rsrc/ui/defaults.css">
     <link rel="stylesheet" href="./rsrc/ui/main.css" />
 
-<style>
 
+
+<!----------------------------------------
+  -- defaults
+  -- will go to a css file after finishing
+  -->
+<style>
+/* utils / defaults */
+
+/**
+* defaults
+*/
+html {
+    scroll-behavior: smooth;
+}
+
+/* img 
+max-inline-size: 100%; ???
+img {
+    display: inline-block;
+    max-width: 100%;
+    heigh: auto;
+    vertical-align: middle;
+    background-size: cover;
+    background-repeat: no-repeat;
+    shape-margin: 1rem;
+    font-style: italic;
+}
 
 
 </style>
@@ -28,24 +53,22 @@
 @keyframes image_blur {
       0% { filter: blur(0px);}
      50% { filter: blur(6px);}
-    100% { filter: blur(8px);}
+    100% { filter: blur(0px);}
 }
 @keyframes image_deblur {
-    from {
-        filter: blur(8px);
-    }
-    to {
-        filter: blur(0px);
-    }
+      0% { filter: blur(8px);}
+     50% { filter: blur(6px);}
+    100% { filter: blur(0px);}
 }
 
 img {
-    animation: image_blur 1.2s;
-    animation-fill-mode: forwards;
+    /* Add the blur effect */
+    filter: blur(30px);
 }
 
 img:hover {
-    animation: image_deblur 0.7s;
+    /* Add the blur effect */
+    animation: image_deblur 1s;
 }
 
 
