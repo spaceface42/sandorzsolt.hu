@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../rsrc/ui/reset.css" />
+
+    <style>
+
+        body {
+            min-height: 100vh;
+            min-height: 100svh;
+            background-color: #e7e2dc;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+
+
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            padding: 60px 0  30px 0;
+            flex: 2;
+            flex-grow: 2;
+            flex-shrink: 2;
+            flex-basis: 300px;
+        }
+
+
+        h3 {
+            
+        }
+
+        main article div {
+            flex: 2;
+            flex-grow: 2;
+            flex-shrink: 2;
+            flex-basis: 300px;
+        }
+
+        .project {
+            padding: 3rem;
+        }
+
+        .project h3, .project p {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+
+        .project:hover > h3,  .project:hover > p {
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        img {
+            border-radius: 0.5rem;
+        }
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+<header>
+
+    <nav>
+        <a href="#">home</a>
+    </nav>
+
+</header>
+
+
+
+<main>
+
+<article>
+    <div class="project">
+        <img src="./terkep1.png" alt="alt" />
+        <h3>project title</h3>
+        <p>project description</p>
+    </div>
+</article>
+
+
+
+<article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/200200.png" alt="alt" />
+    </div>
+</article>
+
+
+
+<article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/100100.png" alt="alt" />
+    </div>
+</article>
+
+
+<article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/200200.png" alt="alt" />
+    </div>
+</article>
+
+<article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/100100.png" alt="alt" />
+        <img src="../../content/300300.png" alt="alt" />
+        <img src="../../content/200200.png" alt="alt" />
+    </div>
+</article>
+
+<article></article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/200200.png" alt="alt" />
+    </div>
+</article>
+    <article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/100100.png" alt="alt" />
+    </div>
+</article>
+    <article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/200200.png" alt="alt" />
+    </div>
+</article>
+    <article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/100100.png" alt="alt" />
+    </div>
+</article>
+    <article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/100100.png" alt="alt" />
+    </div>
+</article>
+    <article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/300300.png" alt="alt" />
+    </div>
+</article>
+    <article>
+    <div>
+        <h3>article title</h3>
+        <img src="../../content/200200.png" alt="alt" />
+    </div>
+</article>
+
+</main>
+
+
+
+<footer>
+
+</footer>
+
+
+
+</body>
+</html>

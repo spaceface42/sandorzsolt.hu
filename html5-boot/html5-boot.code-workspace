@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+				{
+			"path": "./docs"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "html5-boot",
+		"liveServer.settings.root": "/docs",
+		"liveServer.settings.port": 5501
+	}
+}
