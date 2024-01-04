@@ -28,8 +28,8 @@ function ___start() {
         
         // "Consuming Code" (Must wait for a fulfilled Promise)
         myPromise.then(
-          function(value) { /* code if successful */ __scroll() },
-          function(error) { /* code if some error */ }
+          function(value) { console.log('value'); /* code if successful */ ___scroll() },
+          function(error) { console.log('error')/* code if some error */ }
     );
 
 
@@ -47,7 +47,7 @@ function ___start() {
 }
 
 
-
+/*
 function _scroll() {
 
     var target = document.getElementsByTagName("div")[0]
@@ -65,11 +65,9 @@ function _scroll() {
     var io = new IntersectionObserver(callback, options)
     io.observe(target)
 
-}
-
-
+}*/
+/*
 function __scroll() {
-
 
     const element = document.getElementById('main');
 
@@ -93,6 +91,17 @@ function __scroll() {
     function startObservingElement(element) {
         lastIntersectionObserver(element).then((result) => console.log({ result }));
     }
+
+
+}
+*/
+
+function ___scroll() {
+
+
+
+
+
 
 
 }
