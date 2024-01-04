@@ -14,9 +14,35 @@ function ___start() {
     console.info('e42 / dom is ready');
 
     const partial = new FetchPartial();
-    partial.fetchAll();
+    // partial.fetchAll();
 
-    // _scroll();
+
+
+    let myPromise = new Promise(function(myResolve, myReject) {
+        // "Producing Code" (May take some time)
+        partial.fetchAll();
+
+          _scroll(); // when successful
+          myReject();  // when error
+        });
+        
+        // "Consuming Code" (Must wait for a fulfilled Promise)
+        myPromise.then(
+          function(value) { /* code if successful */ },
+          function(error) { /* code if some error */ }
+    );
+
+
+
+
+      
+
+
+      
+
+
+    
+
 
 }
 
@@ -60,6 +86,51 @@ function _scroll() {
 
 
 }*/
+
+function _scroll() {
+
+console.log('_scroll')
+
+
+
+
+// var target = document.getElementsByTagName("blockquote")[0]
+
+var target = document.getElementsByTagName("blockquote")[0]
+
+
+function callback(e, o) {
+    console.log('callback e ')
+   target.style.opacity = e[0].intersectionRatio
+
+}
+
+var options = {
+   root: null,
+   threshold: [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
+}
+
+var io = new IntersectionObserver(callback, options)
+io.observe(target)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
 
 
 

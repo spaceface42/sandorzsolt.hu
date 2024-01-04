@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./resources/css/_reset.css">
+
+</head>
+<body>
+  
+
+    <style>
+
+        body {
+            height: 600vh;
+            background-color: rgba(117, 125, 125, 0.235);
+        }
+
+        main {
+            width: 90vw;
+            position: relative;
+            left: 10vw;
+            background-color: rgb(244, 244, 244);
+        }
+
+        section {
+            height: 95vh;
+            margin: 33px 0 0 0;
+            padding: 12vmin;
+        }
+        section::before {
+            content: "_";
+            position: absolute;
+            left: -12px
+        }
+
+        #observed {
+            background-color: white;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            align-content: space-between;
+        }
+        .flex2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: stretch;
+            align-content: space-between;
+        }
+        .flex3 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: stretch;
+            align-content: stretch;
+        }
+        div {
+            width: 25%;
+            min-width: 320px;
+            background-color: rgba(128, 128, 128, 0.194);
+            min-height: 300px;
+        }
+
+        h2 {
+            width: 100%;
+        }
+
+        /* .animated {
+            opacity: .5;
+        } */
+
+        .visible {
+            color: white;
+            background-color: black;
+            /* opacity: 1; */
+        }
+
+    </style>
+    
+<main>
+
+
+<section>
+<h2>section 1</h2>
+</section>
+
+<section>
+ <h2>section 2</h2>
+</section>
+
+<section  class="_a visible" id="observed">
+<h2>section 3 CLASS visible</h2>
+</section>
+
+<section>
+<h2>section 4</h2>
+</section>
+
+
+
+<section class="flex">
+    <h2>section 5</h2>
+
+    <div class="_a" id="observed2" >_animated</div>
+    <div class="_a">2</div>
+    <div class="_a">3</div>
+
+</section>
+
+<section class="flex2">
+    <h2>section 6</h2>
+
+    <div class="_a">1</div>
+    <div class="_a">2</div>
+    <div class="_a">3</div>
+
+</section>
+
+<section class="flex3">
+    <h2>section 7</h2>
+
+    <div class="_a" id="" >_animated</div>
+    <div class="_a">_animated</div>
+    <div class="_a">_animated</div>
+
+</section>
+
+</main>
+
+
+
+
+
+
+
+
+
+<script>
+
+/*
+Bonus: Graceful Degradation for Absence of Javascript
+(and JS errors)
+We wouldn’t be good stewards of the internet if we didn’t account for what happens when JS doesn’t execute; whether the client has it turned off or if there is a JS error on the page. As it stands, it would cause our animated content to be hidden by CSS, with the browser unable to animate these elements in and creating blank gaps and pages.
+
+We can get around this easily by using some vanilla JS to loop through any elements that we are observing, and add the class which would prep (hide) them for animation:
+*/
+// let animatedElements = document.querySelectorAll('._a');
+// animatedElements.forEach(entry => {
+//     entry.className  += " animated";
+// });
+
+
+
+// observedElements.forEach(entry => { // can also be added to our function from above
+//   entry.classList.add('animated');
+// });
+
+
+
+
+
+
+if ('IntersectionObserver' in window) {
+  // IntersectionObserver initialization code
+  console.log("IntersectionObserver is OK")
+} else {
+    console.log("IntersectionObserver is NOT OK")
+  // make lazy loading elements to be loaded right away
+}
+
+
+
+console.log("hello")
+
+// let options = {
+//     root: document.querySelector('main'),
+//     rootMargin: '10px',
+//     threshold: 1.0
+// }
+
+// let callback = (entries, observer) => {
+//     console.log("   callback started")
+//     entries.forEach(entry => {
+    // Each entry describes an intersection change for one observed
+    // target element:
+    //   entry.boundingClientRect
+    //   entry.intersectionRatio
+    //   entry.intersectionRect
+    //   entry.isIntersecting
+    //   entry.rootBounds
+    //   entry.target
+    //   entry.time
+//     });
+// };
+
+// let observer = new IntersectionObserver(callback, options);
+// let target = document.querySelector('#observed');
+// let target2 = document.querySelector('#observed2');
+// observer.observe(target);
+// observer.observe(target2);
+
+// function mycallback() {
+//     console.log("hi")
+// }
+
+////
+
+
+
+///////// EXAMPLE
+
+// A constant which indicates how many thresholds we want to have between a visibility ratio of 0.0 and 1.0.
+const numSteps = 20.0; 
+
+let boxElement;
+
+// This variable will be used to record what the visibility ratio was the last time a threshold was crossed; this will let us figure out whether the target element is becoming more or less visible.
+let prevRatio = 2.0;
+
+// A string defining a color we'll apply to the target element when the visibility ratio is increasing. The word "ratio" in this string will be replaced with the target's current visibility ratio, so that the element not only changes color but also becomes increasingly opaque as it becomes less obscured.
+let increasingColor = "rgba(166, 166, 166, ratio)";
+
+//Similarly, this is a string defining a color we'll apply when the visibility ratio is decreasing.
+let decreasingColor = "rgba(166, 166, 166, ratio)";
+
+
+
+// Set things up
+window.addEventListener("load", (event) => {
+    boxElement = document.querySelector("#observed");
+    boxElement2 = document.querySelector("#observed2");
+    createObserver();
+}, false);
+
+
+// The createObserver() method is called once page load is complete to handle actually creating the new IntersectionObserver and starting the process of observing the target element.
+function createObserver() {
+  let observer;
+
+  let options = {
+    root: null,
+    rootMargin: "-40px",
+    threshold: buildThresholdList()
+  };
+
+  observer = new IntersectionObserver(handleIntersect, options);
+  observer.observe(boxElement);
+  observer.observe(boxElement2);
+}
+
+// The buildThresholdList() function, which builds the list of thresholds, looks like this:
+function buildThresholdList() {
+  let thresholds = [];
+  let numSteps = 20;
+
+  for (let i=1.0; i<=numSteps; i++) {
+    let ratio = i/numSteps;
+    thresholds.push(ratio);
+  }
+
+  thresholds.push(0);
+  return thresholds;
+}
+
+
+// When the browser detects that the target element (in our case, the one with the ID "box") has been unveiled or obscured such that its visibility ratio crosses one of the thresholds in our list, it calls our handler function, handleIntersect():
+function handleIntersect(entries, observer) {
+
+    // entry.target.classList.toggle('visible');
+
+
+  entries.forEach((entry) => {
+
+    //console.log(entry.target);
+
+   entry.target.classList.toggle('visible');
+
+    // if (entry.intersectionRatio > prevRatio) {
+    //   entry.target.style.backgroundColor = increasingColor.replace("ratio", entry.intersectionRatio);
+    // } else {
+    //   entry.target.style.backgroundColor = decreasingColor.replace("ratio", entry.intersectionRatio);
+    // }
+
+    // prevRatio = entry.intersectionRatio;
+  });
+}
+
+
+
+
+
+
+
+
+console.log("bello")
+
+</script>
+
+</body>
+</html>

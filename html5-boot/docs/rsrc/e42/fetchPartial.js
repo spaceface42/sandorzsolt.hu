@@ -1,3 +1,6 @@
+//https://medium.com/@paabrown/the-hardest-thirty-lines-of-code-ive-ever-written-implementing-the-promise-class-in-js-ae7a36d77ed6
+
+
 /**
  *
  * Searces dom all partial tags: <link rel="html" href="partial.html" />
@@ -35,7 +38,7 @@
  */
 class FetchPartial {
     constructor() {
-        console.info('_42 / FetchPartial');
+        console.info('e42 / FetchPartial');
     }
     // _el is 
     async fetchOne(url, _element) {
