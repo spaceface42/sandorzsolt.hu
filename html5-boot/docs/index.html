@@ -87,9 +87,14 @@ main
         var ArrayTest2 = document.getElementsByName('div');
 
         ArrayTest2.forEach( function(element){
-            element.style.display = 'none'; 
+            // element.style.display = 'none'; 
             element.style.backgroundColor = "#AA0000";
         });
+
+
+        for (var i = 0; i < ArrayTest2.length; i++) {
+          ArrayTest2[i].style.backgroundColor = "#FFCC00";
+        }
 
 
 
