@@ -21,17 +21,27 @@
 </header>
 
 
-
-<main>
-    main
+main
+<hr>
+<br>
+<main id="main">
     <link rel="html" href="./partials/content.html" />
-
-    <picture>
-        <source srcset="/media/cc0-images/surfer-240-200.jpg" media="(orientation: portrait)" />
-        <img src="./content/image.png" alt="600 x 300 px" />
-    </picture>
-
 </main>
+<br>
+<hr>
+/ main
+<style>
+    div {
+    padding: 100px;
+    margin: 100px 0;
+    display: flex;
+    flex-direction: row;
+    background-color: #222;
+    color: white;
+  }
+  </style>
+
+
 
 
 
@@ -40,16 +50,71 @@
     <link rel="html" href="./partials/footer.html" />
 </footer>
 
-<style>
-    blockquote {
-    padding: 100px;
-    margin: 1000px 0;
-    display: inline-block;
-    background-color: #222;
-    color: white;
-  }
-  </style>
-  <blockquote>A div</blockquote>
+
+
+
+
+<script>
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+    var list = document.querySelector('main');
+    
+    var observer = new MutationObserver(function(mutations) {  
+
+      mutations.forEach(function(mutation) {
+
+        if (mutation.type === 'childList') {
+
+        // 1
+        var list_values = [].slice.call(list.children)
+              .map( function(node) { return node.innerHTML; })
+              .filter( function(s) {
+                if (s === '<br>') {
+                  return false;
+                }
+                else {
+                  return true;
+                }
+           });
+        console.log(list_values);
+
+
+        // 2
+            console.log(list.children );
+
+        // 3
+        console.log(Array.prototype.slice.call(list.children ) );
+
+        var ArrayTest2 = document.getElementsByName('div');
+
+        ArrayTest2.forEach( function(element){
+            // element.style.display = 'none'; 
+            element.style.backgroundColor = "#AA0000";
+        });
+
+
+        for (var i = 0; i < ArrayTest2.length; i++) {
+          ArrayTest2[i].style.backgroundColor = "#FFCC00";
+        }
+
+
+
+
+        }
+
+      });
+
+    });
+    
+    observer.observe(list, {
+        attributes: true, 
+        childList: true, 
+        characterData: true
+    });
+</script>
+
+
+
+
 
 <script defer type="module" src="rsrc/app/main.js"></script>
 
