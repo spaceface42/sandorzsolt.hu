@@ -1,0 +1,8 @@
+.fake-transparent {
+    width: 600px;
+    height: 350px;
+    background: repeating-conic-gradient(#cbcdcb 0% 25%, #fffffe 0% 50%) 50%/8px 8px;
+    position: absolute;
+    margin: -3rem 3rem 0 2rem;
+    z-index: -3;
+}
