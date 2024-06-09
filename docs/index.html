@@ -31,28 +31,44 @@
  * typo
  *
  */
- @font-face { 
-    font-family: "ModernEraMono";
-    font-style: normal;
-    font-weight: 400;
-    src: 
-      url('/rsrc/spacesuit/fonts/ModernEraMono-Regular.woff2') format("woff2"),
-      url('/rsrc/spacesuit/fonts/ModernEraMono-Regular.ttf') format("truetype");
+@font-face { 
+  font-family: "ModernEraMono";
+  font-style: normal;
+  font-weight: 400;
+  src: 
+    url('/rsrc/spacesuit/fonts/ModernEraMono-Regular.woff2') format("woff2"),
+    url('/rsrc/spacesuit/fonts/ModernEraMono-Regular.ttf') format("truetype");
 }
 
- body {
-    font: normal normal 400 1rem/1.5 monospace;
-    font-family: ModernEraMono, Consolas, Arial, sans-serif;
-    background-color: var(--main-bg-color);
+body {
+  font: normal normal 400 1rem/1.5 monospace;
+  font-family: ModernEraMono, Consolas, Arial, sans-serif;
+  background-color: var(--main-bg-color);
 }
-
 
 main {
   display: flex;
   min-height: 100vh;
 }
 
+main img {
+  align-self:flex-start;
+  mix-blend-mode: multiply;
+  z-index: 50;
+}
 
+header {
+  z-index: 9999;
+}
+
+pre {
+  z-index: 999;
+  position: relative;
+}
+
+.layer, .fx {
+  border-radius: 1rem;
+}
 
 .layer {
   width: 40vw;
@@ -79,22 +95,22 @@ main {
   z-index: 2;
 }
 
-pre {
-  z-index: 999;
-  position: relative;
-}
-
 .fx {
   width: 50%;
   margin: -7rem 0 0 -1rem;
   z-index: -12;
 }
 
-header {
-  z-index: 9999;
+.fxfx {
+  margin: -3rem 0 0 -6rem;
+  width: 57%;
 }
 
+
+
+
 </style>
+
 
 
 <header>
@@ -110,17 +126,76 @@ header {
 </header>
 
 
+
 <main>
 
   <div class="layer">
-    
+
   </div>
 
   <div class="selection">
     <img class="fx" src="./rsrc/skin/fx.webp" alt="" />
+
+    <img class="fx fxfx" src="./rsrc/skin/f3382014efd90354e86d808e65a7c579.gif" alt="" />
   </div>
 
+
 </main>
+
+
+
+<div id="fx">
+  <style>
+      #fx {
+
+          position: fixed;
+          bottom: 1rem;
+
+          right: 0;
+          bottom: 0;
+          width: 30vw;
+
+          padding: 1rem;
+
+          color: white;
+          font-size: 0.75rem;
+
+      }
+
+      #fx {
+        height: 5rem;
+      }
+
+      #fx:hover {
+        height: max-content
+      }
+
+
+      #fx:hover > p {
+        background-color: black;
+      }
+
+
+      #fx h5 {
+        display: inline-block;
+        max-width: content;
+        margin: 0 0 1px 0;
+      }
+
+      #fx p, #fx h5 {
+        padding: 1rem;
+        border-radius: 0.3rem
+      }
+
+     #fx h5 {
+        background-color: black;
+      }
+
+  </style>
+
+  <h5>debug layer</h5>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla hic quia veritatis, reiciendis suscipit blanditiis, sint inventore at minus praesentium impedit nemo commodi quibusdam voluptatem dolores beatae cumque magnam voluptate.</p>
+</div>
 
 
 
