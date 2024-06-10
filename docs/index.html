@@ -279,8 +279,48 @@ y using this website, you agree to our use of cookies. We use cookies to provide
   width: 100%;
   height: 30vh;
   background-color: #cbcdcb;
+  display: flex;
+	justify-content: center;
+	align-items: center;
 }
 </style>
+
+
+<style>
+#menu {
+  width: 6rem;
+  height: 3rem;
+  background-color: black;
+  border-radius: 3rem;
+  border-width: 0;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#menu:hover {
+  width: 6rem;
+  height: 6rem;
+  filter: invert(1);
+}
+
+
+
+#menu svg {
+  width: 100%;
+}
+</style>
+<button aria-label="Menu Toggle" id="menu">
+  
+      <svg aria-hidden="true" height="100%" width="100%" preserveAspectRatio="slice" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20%" y1="40%" x2="80%" y2="40%" style="stroke:white;stroke-width:3" />
+        <line x1="20%" y1="60%" x2="80%" y2="60%" style="stroke:white;stroke-width:3" />
+      </svg>
+
+</button>
+
+
+
 
 
 
