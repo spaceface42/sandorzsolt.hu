@@ -355,23 +355,42 @@ y using this website, you agree to our use of cookies. We use cookies to provide
   </svg>
 </button>
 
+<div id="fakemenu" class="fakemenu">
+  <style>
+    .fakemenu {
+      display: none;
+      width: 80%;
+      height: 80%;
+      margin: 6rem;
+      padding: 3rem;
+      background-color: bisque;
+    }
+    .visible {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+  </style>
+  <ul>
+    <li>menu 1</li>
+    <li>menu 2</li>
+    <li>menu 3</li>
+  </ul>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const MenuButton = document.getElementById('MenuButton');
+    const FakeMenu = document.getElementById('fakemenu');
     MenuButton.addEventListener('click', () => {
 
       MenuButton.classList.toggle('active');
-      // menu.classList.toggle('active');
-/*
-      if (MenuButton.classList.contains('off')) {
-          MenuButton.classList.remove('off');
-          MenuButton.classList.add('open');
-        } else {
-          MenuButton.classList.remove('open');
-          MenuButton.classList.add('off');
-      }
-          */
-        console.log('clicked MenuButton!');
+      FakeMenu.classList.toggle('visible');
+
+      console.log('clicked MenuButton!');
+
     });
 });
 </script>
