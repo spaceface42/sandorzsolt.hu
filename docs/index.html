@@ -203,86 +203,24 @@ pre {
 By using this website, you agree to our use of cookies. We don't use any cookies.  
 </div>
 <div>
-  By using this website, you agree to our use of cookies. We use cookies to provide you with a great experience and to help our website run effectively.
+y using this website, you agree to our use of cookies. We use cookies to provide you with a great experience and to help our website run effectively.
 </div>
 
-<div class="menu ">
-  <style>
 
-@media(max-width: 1024px) {
-    .menu .color-toggle {
-        display:none
-    }
+
+
+<div class="workspace">
+<style>
+.workspace {
+  width: 100%;
+  height: 30vh;
+  background-color: #cbcdcb;
 }
+</style>
 
-.menu .color-toggle.force-dark {
-    background: #0a2422 !important
-}
-
-.menu .color-toggle.force-dark .knob {
-    background: #edebe5 !important
-}
-
-.menu .color-toggle .knob {
-    width: 9px;
-    height: 9px;
-    background: #edebe5;
-    border-radius: 100px;
-    position: absolute;
-    right: 3px;
-    top: 3px
-}
-
-.menu .color-toggle .knob.lighter {
-    background: #e1d4bf
-}
-
-.menu .color-toggle.off .knob {
-    right: calc(100% - 3px);
-    transform: translate(100%, 0)
-}
-
-
-
-header.light nav .menu .color-toggle {
-    background: #0a2422
-}
-
-header.light nav .menu .color-toggle .knob {
-    background: #e1d4bf
-}
-
-.dark-mode .light .menu .color-toggle {
-    background: #e1d4bf
-}
-
-.dark-mode .light .menu .color-toggle .knob {
-    background: #0a2422
-}
-
-.dark-mode .menu .color-toggle {
-    background: #edebe5
-}
-
-.dark-mode .menu .color-toggle .knob {
-    background: #0a2422
-}
-
-
-.dark-mode .menu.lighter .color-toggle {
-    background: #e1d4bf
-}
-
-
-
-
-
-
-
-
-
-
-.menu .color-toggle {
+<div class="menu">
+<style>
+  .menu .color-toggle {
     display: inline-block;
     width: 30px;
     height: 15px;
@@ -290,23 +228,9 @@ header.light nav .menu .color-toggle .knob {
     border-radius: 15px;
     position: relative;
     margin-bottom: 10px
-}
+  }
 
-@media(max-width: 1024px) {
-    .menu .color-toggle {
-        display:none
-    }
-}
-
-.menu .color-toggle.force-dark {
-    background: #0a2422 !important
-}
-
-.menu .color-toggle.force-dark .knob {
-    background: #edebe5 !important
-}
-
-.menu .color-toggle .knob {
+  .menu .color-toggle .knob {
     width: 9px;
     height: 9px;
     background: #edebe5;
@@ -314,171 +238,64 @@ header.light nav .menu .color-toggle .knob {
     position: absolute;
     right: 3px;
     top: 3px
-}
+  }
 
-.menu .color-toggle .knob.lighter {
-    background: #e1d4bf
-}
-
-.menu .color-toggle.off .knob {
+  .menu .color-toggle.off .knob {
     right: calc(100% - 3px);
     transform: translate(100%, 0)
-}
+  }
 
-  </style>
-  <a href="" class="color-toggle">
-    <div class="knob"></div>
-  </a>
+
+
+  /* ovverrides */
+  @media(max-width: 1024px) {
+      .menu .color-toggle {
+          display:none
+      }
+  }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const LightDarkButton = document.getElementById('color-toggle');
+
+    LightDarkButton.addEventListener('click', () => {
+
+      if (LightDarkButton.classList.contains('off')) {
+          LightDarkButton.classList.remove('off');
+          LightDarkButton.classList.add('on');
+        } else {
+          LightDarkButton.classList.remove('on');
+          LightDarkButton.classList.add('off');
+      }
+
+        console.log('clicked!');
+    });
+
+});
+</script>
+<a id="color-toggle" href="#" class="color-toggle off">
+  <div class="knob"></div>
+</a>
+
 </div>
+
+
+
+</div>
+
+
+
+
 
 </footer>
 
 
-
-
-<div class="exp">
-  <script>
-/** 
-  very simply js to capture mouse position 
-  and set variables to the % location. Everything else is css/svg.
-**/
-function moveBg(e) {
-    const rect = e.target.getBoundingClientRect();
-    e.target.style.setProperty('--x', (e.clientX - rect.x) / rect.width * 100);
-    e.target.style.setProperty('--y', (e.clientY - rect.y) / rect.height * 100);
-}
-document.querySelector("button").addEventListener('pointermove', moveBg);
-
-
-  </script>
-
-  <style>
-    @property --a {
-    syntax: "<percentage>";
-    initial-value: 0%;
-    inherits: true;
-}
-
-.dark button {
-    --a: 0%;
-    --hue: 170deg;
-    --x: 50;
-    --y: 50;
-    --button: hsl(var(--hue), 66%, 66%);
-    --edge: 20px;
-    --size: 2em;
-    
-    background: transparent;
-    color: hsla(var(--hue), 80%, 30%, 0.7);
-    font-size: 1.8em;
-    position: relative;
-    padding: calc(var(--size)) calc(var(--size)*1.5);
-    animation: color 20s linear infinite both;
-    transition: 
-        --a .5s ease-in-out, 
-        scale var(--spring-duration) var(--spring-easing);
-    scale: 0.92;
-    isolation: isolate;
-    &:hover {
-        --a: 100%;
-        transition-duration: .5s, 1s;
-        box-shadow: none;
-        opacity: 1;
-        scale: 1;
-    }
-}
-
-button:before {
-    content: "";
-    position: absolute;
-    inset: 0em;
-    /** here's the magic. A blur and a svg filter */
-    filter: blur(12px) url(#goo) drop-shadow(0 .25em .5em hsla(0deg, 0%, 0%, 0.8)); 
-    /** followed by a radial-gradient which causes the
-    gooey effect to follow mouse-position */
-    background-image:
-        linear-gradient(0deg,var(--button),var(--button)),
-        radial-gradient(
-            40% 70% at calc(var(--x) * 1%) calc(var(--y) * 1%),
-            hsla(var(--hue), 77%, 77%, var(--a)) 0%,
-            transparent 90%
-        );
-    /** and finally a background-clip so the radial-gradient
-    is larger than the linear-gradient */
-    background-clip: content-box, border-box;
-    padding: 24px;
-    z-index: -1;
-    border: inherit;
-    animation: color 20s linear infinite both;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@property --hue {
-    syntax: "<angle>";
-    initial-value: 170deg;
-    inherits: false;
-}
-
-@keyframes color {
-    from {
-        --hue: 170deg;
-    }
-    to {
-        --hue: 530deg;
-    }
-}
-
-
-
-:root {
-    --spring-easing: linear(
-    0, 0.002, 0.01 0.9%, 0.038 1.8%, 0.156, 0.312 5.8%, 0.789 11.1%, 1.015 14.2%,
-    1.096, 1.157, 1.199, 1.224 20.3%, 1.231, 1.231, 1.226, 1.214 24.6%,
-    1.176 26.9%, 1.057 32.6%, 1.007 35.5%, 0.984, 0.968, 0.956, 0.949 42%,
-    0.946 44.1%, 0.95 46.5%, 0.998 57.2%, 1.007, 1.011 63.3%, 1.012 68.3%,
-    0.998 84%, 1
-  );
-    --spring-duration: 1.66s;
-}
-  </style>
-          <button type="button">
-            Gooey Button
-        </button>
-        <svg width="0" height="0" style="position: absolute;">
-          <filter id="goo" x="-50%" y="-50%" width="200%" height="200%">
-            <feComponentTransfer>
-              <feFuncA type="discrete" tableValues="0 1"></feFuncA>
-            </feComponentTransfer>
-            <feGaussianBlur stdDeviation="5"></feGaussianBlur>
-            <feComponentTransfer>
-              <feFuncA type="table" tableValues="-5 11"></feFuncA>
-            </feComponentTransfer>
-          </filter>
-        </svg>
-</div>
-
-<br>
-<br>
-<br>
-
-
-
-
-
+<script>
+  // $("body").toggleClass("dark-mode");
+  // $(".color-toggle").toggleClass("off");
+  // Cookies.set('darkmode', $("body").hasClass("dark-mode"));
+</script>
 
 </body>
 </html>
