@@ -36,8 +36,8 @@
   font-style: normal;
   font-weight: 400;
   src: 
-    url('/rsrc/spacesuit/fonts/ModernEraMono-Regular.woff2') format("woff2"),
-    url('/rsrc/spacesuit/fonts/ModernEraMono-Regular.ttf') format("truetype");
+    url('./rsrc/skin/fonts/ModernEraMono-Regular.woff2') format("woff2"),
+    url('./rsrc/skin/fonts/ModernEraMono-Regular.ttf') format("truetype");
 }
 
 body {
@@ -126,66 +126,77 @@ pre {
 
   </pre>
 
-  <div class="menu">
-    <style>
-      .menu .color-toggle {
-        display: inline-block;
-        width: 2rem;
-        height: 1rem;
-        background: #0a2422;
-        border-radius: 1rem;
-        position: relative;
-        margin: 3rem;
-      }
-      .menu .color-toggle .knob {
-        width: 0.6rem;
-        height: 0.6rem;
-        background: #edebe5;
-        border-radius: 100px;
-        position: absolute;
-        right: 0.2rem;
-        top: 0.2rem
-      }
-      .menu .color-toggle.off .knob {
-        right: calc(100% - 0.2rem);
-        transform: translate(100%, 0)
-      }
-    
-      .on {
-        background-color: orange;
-      }
-    
-      .off {
-        background-color: darkgray;
-      }
-    
-      /* ovverrides */
-      @media(max-width: 1024px) {
-          .menu .color-toggle {
-              display:none
-          }
-      }
-    </style>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const LightDarkButton = document.getElementById('color-toggle');
-        LightDarkButton.addEventListener('click', () => {
-    
-          if (LightDarkButton.classList.contains('off')) {
-              LightDarkButton.classList.remove('off');
-              LightDarkButton.classList.add('on');
-            } else {
-              LightDarkButton.classList.remove('on');
-              LightDarkButton.classList.add('off');
-          }
-            console.log('clicked!');
-        });
-    });
-    </script>
-    <a id="color-toggle" href="#" class="color-toggle off">
-      <div class="knob"></div>
-    </a>
-  </div>
+
+
+
+
+
+<!-- light toggle -->
+<div class="menu">
+  <style>
+    .menu .color-toggle {
+      display: inline-block;
+      width: 2rem;
+      height: 1rem;
+      background: #0a2422;
+      border-radius: 1rem;
+      position: relative;
+      margin: 3rem;
+    }
+    .menu .color-toggle .knob {
+      width: 0.6rem;
+      height: 0.6rem;
+      background: #edebe5;
+      border-radius: 100px;
+      position: absolute;
+      right: 0.2rem;
+      top: 0.2rem
+    }
+    .menu .color-toggle.off .knob {
+      right: calc(100% - 0.2rem);
+      transform: translate(100%, 0)
+    }
+  
+    .on {
+      background-color: orange;
+    }
+  
+    .off {
+      background-color: darkgray;
+    }
+  
+    /* ovverrides */
+    @media(max-width: 1024px) {
+        .menu .color-toggle {
+            display:none
+        }
+    }
+  </style>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const LightDarkButton = document.getElementById('color-toggle');
+      LightDarkButton.addEventListener('click', () => {
+  
+        if (LightDarkButton.classList.contains('off')) {
+            LightDarkButton.classList.remove('off');
+            LightDarkButton.classList.add('on');
+          } else {
+            LightDarkButton.classList.remove('on');
+            LightDarkButton.classList.add('off');
+        }
+          console.log('clicked!');
+      });
+  });
+  </script>
+  <a id="color-toggle" href="#" class="color-toggle off">
+    <div class="knob"></div>
+  </a>
+</div>
+<!-- / light toggle -->
+
+
+
+
 
 </header>
 
@@ -286,38 +297,92 @@ y using this website, you agree to our use of cookies. We use cookies to provide
 </style>
 
 
+
+
+
+
+
+
+<!-- -------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+<!-- hamburger menu -->
 <style>
-#menu {
-  width: 6rem;
-  height: 3rem;
+#MenuButton {
+  width: 4rem;
+  height: 2rem;
   background-color: black;
-  border-radius: 3rem;
+  border-radius: 2rem;
   border-width: 0;
   display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-#menu:hover {
-  width: 6rem;
-  height: 6rem;
+#MenuButton.active {
+  height: 4rem;
   filter: invert(1);
 }
 
+#MenuButton.active:hover {
+  filter: none;
+}
 
+#MenuButton:hover {
+  height: 4rem;
+  filter: invert(1);
+}
 
-#menu svg {
+#MenuButton svg {
   width: 100%;
 }
 </style>
-<button aria-label="Menu Toggle" id="menu">
-  
-      <svg aria-hidden="true" height="100%" width="100%" preserveAspectRatio="slice" xmlns="http://www.w3.org/2000/svg">
-        <line x1="20%" y1="40%" x2="80%" y2="40%" style="stroke:white;stroke-width:3" />
-        <line x1="20%" y1="60%" x2="80%" y2="60%" style="stroke:white;stroke-width:3" />
-      </svg>
-
+<button aria-label="Menu Toggle" id="MenuButton">
+  <svg aria-hidden="true" height="100%" width="100%" preserveAspectRatio="slice" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      line {
+        stroke: white;
+        stroke-width: 2;
+      }
+    </style>
+    <line x1="30%" y1="40%" x2="70%" y2="40%" />
+    <line x1="30%" y1="60%" x2="70%" y2="60%" />
+  </svg>
 </button>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const MenuButton = document.getElementById('MenuButton');
+    MenuButton.addEventListener('click', () => {
+
+      MenuButton.classList.toggle('active');
+      // menu.classList.toggle('active');
+/*
+      if (MenuButton.classList.contains('off')) {
+          MenuButton.classList.remove('off');
+          MenuButton.classList.add('open');
+        } else {
+          MenuButton.classList.remove('open');
+          MenuButton.classList.add('off');
+      }
+          */
+        console.log('clicked MenuButton!');
+    });
+});
+</script>
+
+<!-- / hamburger menu -->
+
+
+
+
+
+
 
 
 
