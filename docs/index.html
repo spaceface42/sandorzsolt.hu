@@ -126,7 +126,64 @@ pre {
 
   </pre>
 
-
+<!-- hamburger menu -->
+<style>
+  #MenuButton {
+    width: 4rem;
+    height: 2rem;
+    background-color: black;
+    border-radius: 2rem;
+    border-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #MenuButton.active {
+    height: 4rem;
+    filter: invert(1);
+  }
+  
+  #MenuButton.active:hover {
+    filter: none;
+  }
+  
+  #MenuButton:hover {
+    height: 4rem;
+    filter: invert(1);
+  }
+  
+  #MenuButton svg {
+    width: 100%;
+  }
+  </style>
+  <button aria-label="Menu Toggle" id="MenuButton">
+    <svg aria-hidden="true" height="100%" width="100%" preserveAspectRatio="slice" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        line {
+          stroke: white;
+          stroke-width: 2;
+        }
+      </style>
+      <line x1="30%" y1="40%" x2="70%" y2="40%" />
+      <line x1="30%" y1="60%" x2="70%" y2="60%" />
+    </svg>
+  </button>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const MenuButton = document.getElementById('MenuButton');
+      const FakeMenu = document.getElementById('fakemenu');
+      MenuButton.addEventListener('click', () => {
+  
+        MenuButton.classList.toggle('active');
+        FakeMenu.classList.toggle('visible');
+  
+        console.log('clicked MenuButton!');
+  
+      });
+  });
+  </script>
+  <!-- / hamburger menu -->
 
 
 
@@ -311,49 +368,28 @@ y using this website, you agree to our use of cookies. We use cookies to provide
 
 
 
-<!-- hamburger menu -->
-<style>
-#MenuButton {
-  width: 4rem;
-  height: 2rem;
-  background-color: black;
-  border-radius: 2rem;
-  border-width: 0;
-  display: flex;
-	justify-content: center;
-	align-items: center;
-}
 
-#MenuButton.active {
-  height: 4rem;
-  filter: invert(1);
-}
 
-#MenuButton.active:hover {
-  filter: none;
-}
 
-#MenuButton:hover {
-  height: 4rem;
-  filter: invert(1);
-}
 
-#MenuButton svg {
-  width: 100%;
-}
-</style>
-<button aria-label="Menu Toggle" id="MenuButton">
-  <svg aria-hidden="true" height="100%" width="100%" preserveAspectRatio="slice" xmlns="http://www.w3.org/2000/svg">
-    <style>
-      line {
-        stroke: white;
-        stroke-width: 2;
-      }
-    </style>
-    <line x1="30%" y1="40%" x2="70%" y2="40%" />
-    <line x1="30%" y1="60%" x2="70%" y2="60%" />
-  </svg>
-</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+</footer>
 
 <div id="fakemenu" class="fakemenu">
   <style>
@@ -379,46 +415,6 @@ y using this website, you agree to our use of cookies. We use cookies to provide
     <li>menu 3</li>
   </ul>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const MenuButton = document.getElementById('MenuButton');
-    const FakeMenu = document.getElementById('fakemenu');
-    MenuButton.addEventListener('click', () => {
-
-      MenuButton.classList.toggle('active');
-      FakeMenu.classList.toggle('visible');
-
-      console.log('clicked MenuButton!');
-
-    });
-});
-</script>
-
-<!-- / hamburger menu -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-</footer>
-
-
 <script>
   // $("body").toggleClass("dark-mode");
   // $(".color-toggle").toggleClass("off");
