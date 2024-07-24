@@ -3,8 +3,9 @@
  *
  * Initialization script for the application.
  */
-import PromiseDom from '../42/PromiseDom.js';
-import FetchPartial from '../42/FetchPartial.js';
+import PromiseDom from '../42/DocumentReadyHandler.js';
+import FetchPartial from '../42/PartialContentFetcher.js';
+
 async function start() {
     // Instantiate PromiseDom
     const domReady = new PromiseDom();
