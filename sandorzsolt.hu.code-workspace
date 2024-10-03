@@ -8,8 +8,8 @@
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "sandorzsolt.hu",
 		"liveServer.settings.root": "/docs",
-		"editor.wordWrap": "on"
+		"editor.wordWrap": "on",
+		"liveServer.settings.multiRootWorkspaceName": "sandorzsolt.hu"
 	}
 }

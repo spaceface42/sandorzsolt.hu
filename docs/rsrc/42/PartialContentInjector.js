@@ -14,6 +14,8 @@ class PartialContentInjector {
         this.partialContentFetcher = new PartialContentFetcher(baseUrl);
         this.allowedCrossOriginDomains = allowedCrossOriginDomains;
     }
+
+
     async injectAllPartials(selector = 'link[rel="html"]') {
         const partials = document.querySelectorAll(selector);
         await Promise.all(Array.from(partials).map(async (partial) => {
@@ -24,16 +26,7 @@ class PartialContentInjector {
             await this.injectPartial(url, partial);
         }));
     }
-    async injectAllPartialsOBSOLETE(selector = 'link[rel="html"]') {
-        const partials = document.querySelectorAll(selector + ':not([data-partial-loaded])');
-        await Promise.all(Array.from(partials).map(async (partial) => {
-            const url = partial.getAttribute('href');
-            if (!url) {
-                throw new Error(`injectAllPartials: No URL provided for element: ${partial.outerHTML}`);
-            }
-            await this.injectPartial(url, partial);
-        }));
-    }
+
     async injectSinglePartial(url, targetSelector) {
         const targetElement = document.querySelector(targetSelector);
         if (!targetElement) {
@@ -41,6 +34,10 @@ class PartialContentInjector {
         }
         await this.injectPartial(url, targetElement);
     }
+
+
+
+
     async injectPartial(url, element) {
         try {
             let content;
@@ -63,6 +60,12 @@ class PartialContentInjector {
             throw error;
         }
     }
+
+
+
+
+
+
     isAllowedCrossOrigin(url) {
         try {
             const urlObject = new URL(url);
@@ -73,7 +76,64 @@ class PartialContentInjector {
             return false;
         }
     }
-    insertContent(content, element) {
+
+
+    async insertContent(content, element) {
+        console.log('_________________________');
+        console.log('Content to be inserted:', content);
+        console.log('_________________________');
+    
+        try {
+            // Create a temporary container
+            const temp = document.createElement('div');
+            temp.innerHTML = content;
+    
+            let svgCount = 0;
+    
+            const insertWithDelay = async (node, delay) => {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        element.parentNode.insertBefore(node, element);
+                        resolve();
+                    }, delay);
+                });
+            };
+    
+            // Process and insert each node
+            for (let child of Array.from(temp.childNodes)) {
+                if (child instanceof SVGElement) {
+                    svgCount++;
+                    console.log(`Processing SVG ${svgCount}`);
+    
+                    const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    svgElement.innerHTML = child.innerHTML;
+                    for (let i = 0; i < child.attributes.length; i++) {
+                        svgElement.setAttribute(child.attributes[i].name, child.attributes[i].value);
+                    }
+                    await insertWithDelay(svgElement, 100); // 100ms delay
+                } else {
+                    element.parentNode.insertBefore(child, element);
+                }
+            }
+    
+            console.log(`Total SVGs processed: ${svgCount}`);
+            console.log('All content inserted successfully');
+            element.remove();
+            console.log('Original element removed');
+        }
+        catch (error) {
+            console.error('insertContent: Error inserting HTML:', error instanceof Error ? error.message : String(error));
+            throw error;
+        }
+    
+        console.log('_________________________');
+    }
+
+
+    insertContentOOOOO(content, element) {
+        console.log('_________________________');
+        console.log(content);
+        console.log('_________________________');
         try {
             element.insertAdjacentHTML('beforebegin', content.trim());
             element.remove();
@@ -83,40 +143,89 @@ class PartialContentInjector {
             throw error;
         }
     }
-    insertContentXX(content, element) {
-        console.log('Attempting to insert content:', content.substring(0, 100) + '...');
+
+
+    insertContentXXX(content, element) {
+        console.log('_________________________');
+        console.log('Content to be inserted:', content);
+        console.log('_________________________');
         console.log('Target element:', element);
+    
         try {
-            element.insertAdjacentHTML('beforebegin', content.trim());
+            const trimmedContent = content.trim();
+            console.log('Trimmed content:', trimmedContent);
+    
+            element.insertAdjacentHTML('beforebegin', trimmedContent);
+            console.log('Content inserted successfully');
+    
+            // Log the inserted content
+            console.log('Inserted content:', element.previousSibling);
+    
             element.remove();
+            console.log('Original element removed');
         }
         catch (error) {
-            console.error('insertContent: Error inserting HTML:', error);
-            console.error('Element:', element);
-            console.error('Content:', content);
+            console.error('insertContent: Error inserting HTML:', error instanceof Error ? error.message : String(error));
             throw error;
         }
+    
+        console.log('_________________________');
     }
-    insertContentDebug(content, element) {
-        var _a;
-        try {
-            // Create a new div to hold the content
-            const contentContainer = document.createElement('div');
-            contentContainer.innerHTML = content.trim();
-            // Insert the new content before the link element
-            (_a = element.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(contentContainer, element);
-            // Optionally, you can hide the original link element
-            element.style.display = 'none';
-            // Add a data attribute to mark this link as processed
-            element.setAttribute('data-partial-loaded', 'true');
+
+
+
+
+
+
+        // ... other methods ...
+    
+        insertContentXXXXX(content, element) {
+            console.log('_________________________');
+            console.log('Content to be inserted:', content);
+            console.log('_________________________');
+        
+            try {
+                // Create a temporary container
+                const temp = document.createElement('div');
+                temp.innerHTML = content;
+        
+                // Process and insert each node
+                while (temp.firstChild) {
+                    if (temp.firstChild instanceof SVGElement) {
+                        // For SVG elements, use SVG namespace
+                        const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                        svgElement.innerHTML = temp.firstChild.innerHTML;
+                        for (let i = 0; i < temp.firstChild.attributes.length; i++) {
+                            svgElement.setAttribute(temp.firstChild.attributes[i].name, temp.firstChild.attributes[i].value);
+                        }
+                        element.parentNode.insertBefore(svgElement, element);
+                    } else {
+                        element.parentNode.insertBefore(temp.firstChild, element);
+                    }
+                }
+        
+                console.log('All content inserted successfully');
+                element.remove();
+                console.log('Original element removed');
+            }
+            catch (error) {
+                console.error('insertContent: Error inserting HTML:', error instanceof Error ? error.message : String(error));
+                throw error;
+            }
+        
+            console.log('_________________________');
         }
-        catch (error) {
-            console.error('insertContent: Error inserting HTML:', error);
-            console.error('Element:', element);
-            console.error('Content:', content);
-            throw error;
-        }
-    }
+
+
+
+
+
+    
+
+
+
+
+
 }
 PartialContentInjector.VERSION = '1.2.1';
 export default PartialContentInjector;

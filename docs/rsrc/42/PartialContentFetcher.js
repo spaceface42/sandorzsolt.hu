@@ -13,7 +13,7 @@ class PartialContentFetcher {
                 ...options,
                 headers: {
                     ...options.headers,
-                    'Accept': 'text/html, text/plain'
+                    'Accept': 'text/html, text/plain, image/svg+xml'
                 }
             });
             if (!response.ok) {
