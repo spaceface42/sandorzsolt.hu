@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./reset.css" />
+</head>
+<body>
+
+
+
+<style>
+
+
+/* atomic */
+section h2 {
+    color: gray;
+}
+
+
+
+
+/* layout */
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+}
+
+header, main, footer {
+
+}
+
+header {
+    background-color: rgb(250, 250, 250);
+    height: 70vh;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    padding: 5vw;
+}
+
+section {
+
+    /* flex */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+	align-items: center;
+	align-content: stretch;
+
+    margin: 2vw 3vw 3vw 3vw;
+    padding: 2vw;
+
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+#text1 {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+section img {
+    max-width: 50%;
+}
+
+/* content elements / sections */
+section:nth-child(odd) {
+    flex-direction: row;
+    flex-shrink: 1;
+}
+
+section:nth-child(even) {
+    flex-direction: row-reverse;
+    flex-shrink: 1;
+}
+
+
+
+
+section img {
+   
+}
+
+.question {
+
+}
+
+.question p {
+    margin: 1rem;
+    padding: 2rem 3rem 2rem 3rem;
+    border-radius: 0.2rem;
+    background-color: #f4f597ed;
+
+}
+
+.question p:nth-child(1) {
+    background-color: #fb860078;
+    transform: rotate(4deg) skew(1deg, 1deg);
+    max-width: 33ch;
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+.question p:nth-child(2) {
+    background-color: #faedcd;
+    transform: rotate(2deg) skew(-1deg, -1deg);
+    max-width: 53ch;
+    margin-left: -2rem;
+}
+
+.question p:nth-child(3) {
+    margin-left: 4rem;
+    transform: rotate(-3deg) skew(-1deg, -1deg);
+    max-width: 43ch;
+}
+
+
+/* tipo */
+body {
+    font-family: "Lucida Grande", Tahoma;
+    font-size: 1rem;
+    font-style: normal;
+}
+
+
+
+
+/*
+p.act {
+    background-color: blue;
+    transform: skew(9deg, -1deg);
+}
+*/
+.cta {
+    padding: 1rem 4rem 1rem 4rem;
+
+    border-radius: 99rem;
+    
+    display: inline-block;
+    margin: 2rem 0 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+
+    background-image: linear-gradient(to right, #9ac402ed 0%, #08ab1b  51%, #2b9d8f  100%);
+    background-size: 200% auto;
+    transition: 0.5s;
+
+}
+
+.cta:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+<header>
+    <!-- SLIDER -->
+<div class="slider">
+    <style>
+        /* Slider container */
+        .slider {
+            width: 100%; /* Full width */
+            height: 100%;
+            position: relative; /* Make it a positioning context for the slides */
+            overflow: hidden;
+            background-color: #e8e7e0; /* Fallback background if images fail to load */
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease; /* Smooth opacity transition */
+        }
+
+        .slide.active {
+            opacity: 1; /* Show active slide */
+        }
+
+        /* background with cover effect */
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures the image covers the slider container */
+            object-position: center; /* Centers the image */
+        }
+
+        /* Polyfill for object-fit */
+        .slide img.object-fit-polyfill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* For modern browsers */
+            background-size: cover; /* For older browsers */
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0; /* Hide the image itself */
+        }
+    </style>
+    <div class="slide active">
+        <img src="./content/slide1.svg" alt="Slide 1">
+    </div>
+    <div class="slide">
+        <img src="./content/slide2.svg" alt="Slide 2">
+    </div>
+    <div class="slide">
+        <img src="./content/slide3.svg" alt="Slide 3">
+    </div>
+</div>
+<!-- / SLIDER -->
+</header>
+
+<main>
+
+
+
+
+<section id="text1">
+    <img src="./content/felveteli-eljaras.jpg" alt="A középiskolai felvételi eljárás szakaszai. 2024/2025 tanév" />
+    <div class="question">
+        <p>Középiskolába készül a gyermeked?</p>
+        <p>Ismered már az alábbi határidőket, és egyértelműek számodra a megnevezések is?</p>
+        <p class="act">Csatllakozz a „Középiskola választás„ zárt Facebook-csoporthoz, ahol segítséget kapsz
+            határidőkben, teendőkben és a középiskola választás szempontjaiban!</p>
+        <a class="cta" href="#">szeretnék bekapcsolódni</a>
+    </div>
+
+</section>
+
+<section id="text2">
+    <img src="./content/question-2.svg" alt="" />
+    <div class="question">
+        <p>Szeretnél a felvételi dátumokról és teendőkről emlékeztetőt kapni?
+            <br/><br/>
+            Itt kérheted:</p>
+        <a class="cta" href="#">kérem az emlékeztetőt</a>
+    </div>
+</section>
+
+<section id="text2a">
+    <img src="./content/join.svg" alt="" />
+    <div class="question">
+        <p>A „Középiskola választás” zárt FB-csoportban lehetőséged van kérdezni, tapasztalataidat megosztani, naprakész információkhoz jutni -  Kapcsolódj be Te is!</p>
+        <a class="cta" href="#">kérem az emlékeztetőt</a>
+    </div>
+</section>
+
+
+
+<section id="text3">
+    <h2>Hogyan válasszunk iskolát?</h2>
+    <img src="./content/sarkalatos-pontok.jpg" alt="a középiskola választás sarkalatos pontjai" />
+</section>
+
+<!-- 4 -->
+<section id="text4">
+    <div class="question">
+    <p>Ha már Te is látod, hogy egy hétvégénél sokkal többre van szükségetek a középiskola választáshoz, csatlakozz FB-csoportunkhoz itt!</p>
+    <a class="cta" href="#">csatlakozom</a>
+    </div>
+</section>
+
+<!-- 5 -->
+<section id="about-me">
+<style>
+#about-me {
+    padding: 3rem;
+    background-color: #e8e7e0;
+}
+#about-me h2 {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+#about-me > div {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    align-content: strech;
+    flex-wrap: wrap;
+    gap: 0rem;
+}
+
+#about-me .about-id {
+    max-width: 46ch;
+    min-width: min-content;
+    display: block;
+}
+
+#about-me .zorro {
+    background-color: none;
+    box-shadow: none;
+}
+
+#about-me .about-id img {
+    border-radius: 999rem;
+    min-width: 100%;
+    height: auto;
+}
+
+.about-id p {
+    max-width: 36ch;
+    padding: 1rem 0 0 0;
+    display: flex;
+    font-style: oblique;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.normal {
+    background-color: #08ab1b;
+}
+.zorro {
+    background-color: #08ab1b; !important
+}
+</style>
+<h2>Szülőknek segítek tudatosan és megfontoltan középiskolát választani gyermekük számára.</h2>
+<div>
+    <div class="card about-id">
+        <img src="./content/Herr-Judit.jpg" alt="Herr Judit">
+        <p>Herr Judit – Tanulásmódszertani, továbbtanulási és pályaorientációs tanácsadó, mentálhigiénés szakember</p>
+    </div>
+
+    <div class="card zorro">
+        <p>Tanulásmódszertani, továbbtanulási és pályaorientációs tanácsadó, mentálhigiénés szakember</p>
+        <p>Tanítottam általános és középiskolában, oktattam tanárképzésben, fejlesztettem curriculumokat és tananyagokat. Szakmai vezetőként tanulásmódszertani projekteket dolgoztam ki. Tanulásmódszertani és önismereti tréningeket tartok, valamint diákoknak és szüleiknek segítek továbbtanulási döntéshozásban.</p>
+        <a class="cta" href="#">csatlakozom</a>
+    </div>
+</div>
+</section>
+
+
+
+
+
+<style>
+#text6 {
+    background-color: transparent;
+    padding: 3rem;
+    box-shadow: none;
+}
+#text6 h2 {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+#text6 > div {
+    display: flex;
+    justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.card {
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+}
+.card p {
+    max-width: 36ch;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgb(155, 155, 155);
+}
+.sign {
+    text-align: right;
+    font-style: oblique;
+    padding: 1rem 1rem 0 0;
+    font-size: 0.9rem;
+}
+</style>
+
+
+
+<!-- 6 -->
+<section id="text6">
+    <h2>Vélemények</h2>
+
+    <div>
+        <div class="card">
+            <p>„Sikertelen felvételi után megkérdeztem Juditot, merre induljak tovább. Volt egy újabb szakirány ötletem, ebből indultunk ki. Judit kérdései rávezettek arra, ez az út mégsem annyira előnyös nekem, és ne csak az érdeklődési területem alapján keressek. Célirányosan kerestünk és választottam a személyiségemhez és a karrierutamhoz jobban illeszkedő szakirányt. Bejött. Köszönöm neki. Nagyon!”</p>
+            <p class="sign">Attila</p>
+        </div>
+
+        <div class="card">
+            <p>„Feloldotta a szorongásomat azáltal, hogy megtanultam beosztani jobban az időmet, és megtaláltam a nekem megfelelő tanulási módszereket.”</p>
+            <p class="sign">Lívia</p>
+        </div>
+
+        <div class="card">
+            <p>„Fiam középiskolai pályaválasztása előtt állva a fiam és én eltérő véleményen voltunk: két különböző módon láttuk az eljutási lehetőséget a célhoz. Judit, miután megismerte a helyzetet és a körülményeket, egy tiszta, reális, valós képet vázolt fel. Ezt meglátva és megértve egy helyes, pontos döntés tudott létrejönni, ami mindkettőnk számára elfogadható és megnyugtató volt. Én (az anya) voltam egyébként az, aki kezdetben más nézőponton volt. A folyamat során el tudtam engedni az elképzelésemet, mert Judit segítségével meg tudtam látni a nézőpontom hiányosságait. Az elmúlt időszak pedig teljes mértékben hozta és igazolta a döntésünk helyességét.”</p>
+            <p class="sign">Ildikó</p>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+<!-- 7 -->
+<section id="text7">
+    <img src="./content/choice.svg" alt="" />
+    <div class="question">
+    <p>Csatlakozz a „Középiskola választás” facebook csoporthoz, hogy megtudd, hogyan döntsetek Ti is tudatosan a középiskoláról!</p>
+    <a class="cta" href="#">csatlakozom</a>
+    </div>
+</section>
+
+
+
+
+
+</main>
+
+
+<footer>
+
+<style>
+footer {
+    display: flex;
+    gap: 6rem;
+    background-color: gray;
+    padding: 6rem;
+    color: white
+}
+
+footer a {
+    color: white;
+}
+
+footer * {
+    flex: 1 1 1;
+}
+
+.logo {
+    max-width: 12rem;
+}
+
+
+</style>
+
+    <img class="logo" src="./content/logo-feher.svg" alt="" />
+
+    <ul>
+        <li>
+            <a href="#">Kezdőoldalra klikk</a>
+        </li>
+        <li>
+            <a href="#">közepiskolavalasztas.h</a>
+        </li>
+        <li>
+            <a href="#">Kapcsolat: judit@közepiskolavalasztas.hu</a>
+        </li>
+        <li>
+            <a href="#">Facebook: Középiskola választás</a>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <a href="#">ÁSZF</a>
+        </li>
+        <li>
+            <a href="#">Adatvédelmi tájékoztató</a>
+        </li>
+        <li>
+            <a href="#">Sütik</a>
+        </li>
+        <li>
+            <a href="#">Weblap üzemetetője</a>
+        </li>
+    </ul>
+
+</footer>
+
+
+
+<script>
+    (function() {
+        // Check if browser supports object-fit
+        if (!('objectFit' in document.createElement('img').style)) {
+            // Select all images in the slider
+            var images = document.querySelectorAll('.slide img');
+            images.forEach(function(image) {
+                // Apply background-image style for polyfill
+                var imageUrl = image.src;
+                image.style.backgroundImage = 'url("' + imageUrl + '")';
+                image.classList.add('object-fit-polyfill'); // Add polyfill class
+            });
+        }
+    })();
+
+    // JavaScript to handle the slider logic
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    function showNextSlide() {
+        slides[currentSlide].classList.remove('active'); // Hide current slide
+        currentSlide = (currentSlide + 1) % totalSlides; // Move to next slide
+        slides[currentSlide].classList.add('active'); // Show next slide
+    }
+
+    // Show the next slide every 4 seconds
+    setInterval(showNextSlide, 4000); // 4000ms = 4 seconds
+</script>
+
+
+
+</body>
+</html>
